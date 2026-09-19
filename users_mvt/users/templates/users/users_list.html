@@ -1,10 +1,9 @@
-{% extends 'base.html' %} {% block title %}Lista de Usuarios{% endblock %} 
-
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Lista de Usuarios{% endblock %} {% block content %}
 <div class="mt-4">
   <h2 class="mb-4">Lista de Usuarios</h2>
-  <a href="{% url 'user_create' %}" role="button" class="btn btn-primary mb-4">Crear usuario</a>
+  <a href="{% url 'user_create' %}" role="button" class="btn btn-primary mb-4"
+    >Crear usuario</a
+  >
 
   <div class="table text-start">
     <table class="table table-hover table-bordered align-middle">
@@ -40,8 +39,23 @@
             {% if user.gender == 'male' %} Hombre {% else %} Mujer {% endif %}
           </td>
           <td>
-            <a href="{% url 'user_detail' user.id  %}" class="btn btn-info" role="button"
+            <a
+              href="{% url 'user_detail' user.id  %}"
+              class="btn btn-info"
+              role="button"
               >Ir</a
+            >
+            <a
+              href="{% url 'user_update' user.id  %}"
+              class="btn btn-warning"
+              role="button"
+              >Editar</a
+            >
+            <a
+              href="{% url 'user_delete' user.id  %}"
+              class="btn btn-danger"
+              role="button"
+              >Eliminar</a
             >
           </td>
         </tr>

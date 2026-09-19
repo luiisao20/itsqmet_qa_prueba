@@ -20,3 +20,20 @@ def user_create(request):
   else:
     form = UserForm()
   return render(request, "users/user_form.html", {'form': form})
+
+def user_update(request, id):
+  user = get_object_or_404(User, id=id)
+
+  if request.method == 'POST':
+    form = UserForm(request.POST, instance=user)
+    if form.is_valid():
+      form.save()
+      return render(request, "users/user_detail.html", {"user": form.instance})
+  else:
+    form = UserForm()
+  return render(request, "users/user_form.html", {'form': form})
+
+def user_delete(request, id):
+  product = get_object_or_404(User, id=id)
+  product.delete()
+  return redirect("users_list")
