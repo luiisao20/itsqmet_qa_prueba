@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %}Detalle de Usuario{% endblock %} 
+{% block content %}
+<div class="row justify-content-center mt-5 text-start">
+  <div class="col-md-6 col-lg-5">
+    <div class="card">
+      <img
+        src="{{ user.image }}"
+        alt="Foto de {{ user.first_name }}"
+        style="max-height: 350px; object-fit: cover"
+      />
+
+      <div class="card-body">
+        <h4 class="card-title text-center mb-1">
+          {{ user.first_name }} {{ user.last_name }}
+        </h4>
+        <p class="card-text text-center mb-4">{{ user.title }}</p>
+
+        <ul class="list-group mb-4">
+          <li class="list-group-item"><strong>ID:</strong> {{ user.id }}</li>
+          <li class="list-group-item">
+            <strong>Género:</strong>
+            {% if user.gender == 'male' %} Hombre {% else %} Mujer {% endif %}
+          </li>
+          <li class="list-group-item">
+            <strong>Email:</strong>
+            <p>{{ user.email }}</p>
+          </li>
+          <li class="list-group-item">
+            <strong>Teléfono:</strong> {{ user.phone }}
+          </li>
+          <li class="list-group-item">
+            <strong>Ubicación:</strong> {{ user.location }}
+          </li>
+        </ul>
+
+        <div class="text-center">
+          <a
+            href="javascript:history.back()"
+            class="btn btn-outline-secondary w-100"
+            >Volver a la lista</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
